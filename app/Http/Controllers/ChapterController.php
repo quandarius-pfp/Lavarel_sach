@@ -90,7 +90,9 @@ class ChapterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $chapter = Chapter::find($id);
+        $truyen = Truyen::orderBy('id','DESC')->get();
+        return  view('admincp.chapter.edit')->with(compact('truyen','chapter'));
     }
 
     /**
@@ -102,7 +104,37 @@ class ChapterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request -> validate([
+            'tieude' => 'required|max:255',
+            'slug_chapter' => 'required|max:255',
+            'tomtat' => 'required',
+            'noidung' => 'required',
+            'kichhoat' => 'required',
+            
+           ],
+           [
+            'tieude.unique' => 'Tên chapter đã có , xin điền tên khác',
+            'slug_chapter.unique' => 'SLUG chapter Đã có , xin điền SLUG khác',
+            'tieude.required' => 'Tên chapter Phải có',
+            'slug_chapter.required' => 'Slug chapter Phải có',
+            'tomtat.required' => 'Mô tả chapter phải có',
+            'noidung.reqiured' => 'Nội Dung chapter phải có',
+           ]
+        
+        );
+        $data = $request->all();
+        
+        $chapter = Chapter::find($id);
+        $chapter->tieude = $data['tieude'];
+        $chapter->slug_chapter = $data['slug_chapter'];
+        $chapter->tomtat = $data['tomtat'];
+        $chapter->noidung = $data['noidung'];
+        $chapter->kichhoat = $data['kichhoat'];
+        $chapter->truyen_id = $data['truyen_id'];
+        /* them hinh anh */
+        
+        $chapter->save();
+        return redirect()->back()->with('status','Cập Nhật Chapter Thành Công');
     }
 
     /**
