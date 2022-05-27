@@ -44,7 +44,7 @@ class ChapterController extends Controller
             'tomtat' => 'required',
             'noidung' => 'required',
             'kichhoat' => 'required',
-            'truyen_id' =>'required',
+            
            ],
            [
             'tieude.unique' => 'Tên chapter đã có , xin điền tên khác',
@@ -113,6 +113,7 @@ class ChapterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Chapter::find($id)->delete();
+        return redirect()->back()->with('status','Xóa Chapter Thành Công');
     }
 }

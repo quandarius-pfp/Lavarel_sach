@@ -4,9 +4,9 @@
 @include('layouts.nav')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="">
             <div class="card">
-                <div class="card-header">Liệt danh chapter</div>
+                <div class="card-header">Liệt kê chapter</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -19,22 +19,24 @@
                             <tr>
                               <th scope="col">#</th>
                               <th scope="col">Tên Chapter</th>
-                              <th scope="col">Slug danh mục</th>
-                              <th scope="col">Mô tả</th>
+                              <th scope="col">Slug Chapter</th>
+                              <th scope="col">Tóm tắt</th>
+                              <th scope="col">Thuộc truyện</th>
                               <th scope="col">Kích Hoạt</th>
                               <th scope="col">Quản lí</th>
                             </tr>
                           </thead>
                           <tbody>
-                              @foreach($danhmuctruyen as $key => $danhmuc)
+                              @foreach($chapter as $key => $chap)
 
                             <tr>
                               <th scope="row">{{$key+1}}</th>
-                              <td>{{$danhmuc->tendanhmuc}}</td>
-                              <td>{{$danhmuc->slug_danhmuc}}</td>
-                              <td>{{$danhmuc->mota}}</td>
+                              <td>{{$chap->tieude}}</td>
+                              <td>{{$chap->slug_chapter}}</td>
+                              <td>{{$chap->tomtat}}</td>
+                              <td>{{$chap->truyen->tentruyen}}</td>
                               <td>
-                                @if($danhmuc->kichhoat == 1)
+                                @if($chap->kichhoat == 1)
                                 <p class="text-success">Kích Hoạt</p>
                                 @else
                                 <p class="text-danger">Không kích hoạt</p>
@@ -42,11 +44,11 @@
                               </td>
                               <td>
                                 <div class="d-flex">
-                                <a href="{{route('danhmuc.edit',[$danhmuc->id])}}" class="btn btn-warning ">Edit</a>
-                                  <form action="{{route('danhmuc.destroy',[$danhmuc->id])}}" method ="POST">
+                                <a href="{{route('chapter.edit',[$chap->id])}}" class="btn btn-warning ">Edit</a>
+                                  <form action="{{route('chapter.destroy',[$chap->id])}}" method ="POST">
                                   @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger ms-2" onclick="return confirm('Bạn muốn xóa danh mục này hay không')">Delete</button>
+                                    <button class="btn btn-danger ms-2" onclick="return confirm('Bạn muốn xóa chapter truyện này hay không')">Delete</button>
                                 </form></div>
                               </td>
                             </tr>
