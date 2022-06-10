@@ -27,9 +27,13 @@
                     <form method="POST" action="{{route('truyen.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Tên Danh Mục</label>
-                          <input type="text" class="form-control" aria-describedby="emailHelp" onkeyup="ChangeToSlug();" id="slug" placeholder="Nhập tên danh mục . . . " name="tentruyen" value="{{old('tentruyen')}}" >
+                          <label for="exampleInputEmail1" class="form-label">Tên truyện</label>
+                          <input type="text" class="form-control" aria-describedby="emailHelp" onkeyup="ChangeToSlug();" id="slug" placeholder="Nhập tên truyện . . . " name="tentruyen" value="{{old('tentruyen')}}" >
                         </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Tác Giả</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp"   placeholder="Nhập tên tác giả . . . " name="tacgia" value="{{old('tacgia')}}" >
+                          </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Slug truyen</label>
                             <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nhập  Slug . . . " name="slug_truyen" value="{{old('slug_truyen')}}" id="convert_slug">

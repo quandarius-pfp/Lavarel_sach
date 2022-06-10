@@ -22,91 +22,67 @@
             <img class="bd-placeholder-img card-img-top" src="{{asset('public/uploads/truyen/65216_laptop_asus_gaming_tuf_fa507r_4387.png')}}"> 
           </div>
           <div class="col-md-9">
-                     <ul class="infotruyen">
-                         <li>Tác Giả : YokoShima</li>
+                     <ul class="infotruyen"> 
+                         <li>Tên Truyện : {{$truyen->tentruyen}}</li>
+                         <li>Tác Giả : {{$truyen->tacgia}}</li>
+                         <li>Danh mục chuyện : <a href="{{url('danh-muc/'.$truyen->danhmuctruyen->slug_danhmuc)}}">{{$truyen->danhmuctruyen->tendanhmuc}}</a> </li>
                          <li>Số Chapter: 200</li>
                          <li>Số Lượt xem</li>
                          <li><a href="#">Xem Mục lục</a></li>
-                         <li><a href="" class="btn btn-primary">Đọc online</a></li>
+                         <li><a href="{{url('xem-chapter/'.$chapter_dau->slug_chapter)}}" class="btn btn-primary">Đọc online</a></li>
                      </ul>
           </div>
         </div>
         <div class="col-md-12">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis neque maiores incidunt quas itaque laborum nobis illo dignissimos nulla, consequatur ex ratione necessitatibus ea ullam consectetur voluptatibus, quam magnam quasi inventore assumenda rem? Deserunt officia molestias consequuntur in modi quisquam quis reiciendis cum sit id tempore quasi voluptates accusamus iste cumque quaerat ut ipsum, aliquid assumenda. Ab eos exercitationem cupiditate sint in optio accusamus dolores, voluptatum, nostrum minima necessitatibus at excepturi alias asperiores mollitia libero hic, a temporibus ut! Commodi incidunt cumque aspernatur ab inventore quibusdam nam corrupti atque! Quisquam ratione sapiente eius ipsam laborum tempore, id nostrum, omnis natus aspernatur eligendi error velit enim atque blanditiis necessitatibus reiciendis optio? Sunt dolorem libero aperiam? Quasi harum sit nemo id similique, velit cumque odit doloremque quod repudiandae corporis quisquam porro maiores! Cupiditate blanditiis est architecto officiis doloribus minus nisi eveniet recusandae officia mollitia enim eos quis non adipisci alias aliquam provident, facere et amet maxime tempora quasi deserunt. Reprehenderit blanditiis vel in suscipit nesciunt rerum quisquam provident mollitia dolorum nihil odit a modi soluta, nobis qui quidem tempore vitae perferendis voluptatem? Aut consequatur beatae itaque nostrum recusandae reprehenderit impedit quia perspiciatis, tempore eum iste optio magnam exercitationem non est alias odio!</p>
+            <p>{{$truyen->tomtat}}</p>
         </div>
         <hr>
         <h4>Mục Lục</h4>
         <div class="col-md-9">
+                  @php 
+                        $count_mucluc = count($chapter)
+                  @endphp
+                  @if($count_mucluc > 0)
             <ul class="mucluctruyen">
-                <li><a href="#">Phần 1 - chương 1</a></li>
-                <li><a href="#">Phần 1 - chương 1</a></li>
-                <li><a href="#">Phần 1 - chương 1</a></li>
-                <li><a href="#">Phần 1 - chương 1</a></li>
-                <li><a href="#">Phần 1 - chương 1</a></li>
-                <li><a href="#">Phần 1 - chương 1</a></li>
-                <li><a href="#">Phần 1 - chương 1</a></li>
-                <li><a href="#">Phần 1 - chương 1</a></li>
-                <li><a href="#">Phần 1 - chương 1</a></li>
-               
+                  
+                @foreach($chapter as $key => $chap)
+
+                <li><a href="{{url('xem-chapter/'.$chap->slug_chapter)}}">{{$chap->tieude}}</a></li>
+                
+            @endforeach
             </ul>
-            
+            @else
+            <div class="p-3 mb-2 bg-light text-dark">Mục Lục đang cập nhật</div>
+            @endif
 
        </div>
        <h4>Sách cùng danh mục</h4>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 ">
                  
-                <div class="col ">
-                    <div class="card mb-4 shadow-sm">
-                        <a href="">
-                      <img class="bd-placeholder-img card-img-top" src="{{asset('public/uploads/truyen/65216_laptop_asus_gaming_tuf_fa507r_4387.png')}}"> 
-          
-                      <div class="card-body">
-                        <h5>This is a wider card with supporting text</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        
+                
+                  
+                @foreach($cungdanhmuc as $key => $value2)
+                <div class="col">
+                  <div class="card shadow-sm">
+                    
+                    <img class="bd-placeholder-img card-img-top" src="{{asset('public/uploads/truyen/'.$value2->hinhanh)}}"> 
+        
+                    <div class="card-body">
+                      <h4>{{$value2->tentruyen}}</h4>
+                      <p class="card-text">{{$value2->tomtat}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <a href="{{url('xem-truyen/'.$value2->slug_truyen)}}" class="btn btn-sm btn-outline-secondary">Đọc Ngay</a>
+                          <a class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye"></i> 512345</a>
+                        </div>
+                        <small class="text-muted">9 mins ago</small>
                       </div>
-                      </a>
                     </div>
+
                   </div>
-                  <div class="col ">
-                    <div class="card mb-4 shadow-sm">
-                        <a href="">
-                      <img class="bd-placeholder-img card-img-top" src="{{asset('public/uploads/truyen/65216_laptop_asus_gaming_tuf_fa507r_4387.png')}}"> 
-          
-                      <div class="card-body">
-                        <h5>This is a wider card with supporting text</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        
-                      </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col ">
-                    <div class="card mb-4 shadow-sm">
-                        <a href="">
-                      <img class="bd-placeholder-img card-img-top" src="{{asset('public/uploads/truyen/65216_laptop_asus_gaming_tuf_fa507r_4387.png')}}"> 
-          
-                      <div class="card-body">
-                        <h5>This is a wider card with supporting text</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        
-                      </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col ">
-                    <div class="card mb-4 shadow-sm">
-                        <a href="">
-                      <img class="bd-placeholder-img card-img-top" src="{{asset('public/uploads/truyen/65216_laptop_asus_gaming_tuf_fa507r_4387.png')}}"> 
-          
-                      <div class="card-body">
-                        <h5>This is a wider card with supporting text</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        
-                      </div>
-                      </a>
-                    </div>
-                  </div>
+                </div>
+                @endforeach
+      
                   
 
             </div>

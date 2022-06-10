@@ -38,8 +38,9 @@
                           Danh Mục Chuyện
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#">A</a></li>
-                          
+                          @foreach ( $danhmuc as $key => $danh)
+                          <li><a class="dropdown-item" href="{{url('danh-muc/'.$danh->slug_danhmuc)}}">{{$danh->tendanhmuc}}</a></li>
+                          @endforeach
                         </ul>
                       </li>
                       <li class="nav-item dropdown">
@@ -51,9 +52,7 @@
                           
                         </ul>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                      </li>
+                      
                     </ul>
                     <form class="d-flex" role="search">
                       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

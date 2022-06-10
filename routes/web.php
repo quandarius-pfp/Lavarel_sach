@@ -19,7 +19,11 @@ use App\Http\Controllers\IndexController;
 */
 
 Route::get('/',[IndexController::class,'home'] );
-Route::get('/doc-truyen/{id}',[IndexController::class,'doctruyen'] )->name('doctruyen');
+
+Route::get('/danh-muc/{slug}',[IndexController::class,'danhmuc'] );
+Route::get('/xem-truyen/{slug}',[IndexController::class,'xemtruyen'] );
+Route::get('/xem-chapter/{slug}',[IndexController::class,'xemchapter'] );
+
 
 Auth::routes();
 

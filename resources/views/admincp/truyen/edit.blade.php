@@ -31,6 +31,10 @@
                           <input type="text" class="form-control" aria-describedby="emailHelp" onkeyup="ChangeToSlug();" id="slug" placeholder="Nhập tên danh mục . . . " name="tentruyen" value="{{$truyen->tentruyen}}" >
                         </div>
                         <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Tên tác giả</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp"  placeholder="Nhập tên tác giả . . . " name="tacgia" value="{{$truyen->tacgia}}" >
+                          </div>
+                        <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Slug truyen</label>
                             <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nhập  Slug . . . " name="slug_truyen" value="{{$truyen->slug_truyen}}" id="convert_slug">
                           </div>

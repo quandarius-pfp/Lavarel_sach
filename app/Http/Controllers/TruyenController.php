@@ -42,6 +42,7 @@ class TruyenController extends Controller
             'slug_truyen' => 'required|unique:tbl_truyen|max:255',
             'hinhanh'=>'required|image|mimes:jpeg,png,jpg,gif,svg,JPG|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
             'tomtat' => 'required',
+            'tacgia' => 'required',
             'kichhoat' => 'required',
             'danhmuc' =>'required',
            ],
@@ -51,6 +52,7 @@ class TruyenController extends Controller
             'tentruyen.required' => 'Tên truyện Phải có',
             'slug_truyen.required' => 'Slug truyện Phải có',
             'tomtat.required' => 'Mô tả truyện phải có',
+            'tacgia.required' => 'tacgia truyện phải có',
             'hinhanh.reqiured' => 'Hình ảnh truyện phải có',
            ]
         
@@ -61,6 +63,7 @@ class TruyenController extends Controller
         $truyen->tentruyen = $data['tentruyen'];
         $truyen->slug_truyen = $data['slug_truyen'];
         $truyen->tomtat = $data['tomtat'];
+        $truyen->tacgia = $data['tacgia'];
         $truyen->kichhoat = $data['kichhoat'];
         $truyen->danhmuc_id = $data['danhmuc'];
         /* them hinh anh */
@@ -115,12 +118,14 @@ class TruyenController extends Controller
             'tomtat' => 'required',
             'kichhoat' => 'required',
             'danhmuc' =>'required',
+            'tacgia' => 'required',
            ],
            [
            
             'tentruyen.required' => 'Tên truyện Phải có',
             'slug_truyen.required' => 'Slug truyện Phải có',
             'tomtat.required' => 'Mô tả truyện phải có',
+            'tacgia.required' => 'tacgia truyện phải có',
             
            ]
         
@@ -133,6 +138,7 @@ class TruyenController extends Controller
         $truyen->tomtat = $data['tomtat'];
         $truyen->kichhoat = $data['kichhoat'];
         $truyen->danhmuc_id = $data['danhmuc'];
+        $truyen->tacgia = $data['tacgia'];
         /* them hinh anh */
         $get_image = $request->hinhanh;
         if($get_image){
