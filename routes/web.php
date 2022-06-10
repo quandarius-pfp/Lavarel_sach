@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DanhMucController;
 use App\Http\Controllers\TruyenController;
 use App\Http\Controllers\ChapterController;
-
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +18,8 @@ use App\Http\Controllers\ChapterController;
 |
 */
 
-Route::get('/', function () {
-    return view('layout');
-});
+Route::get('/',[IndexController::class,'home'] );
+Route::get('/doc-truyen/{id}',[IndexController::class,'doctruyen'] )->name('doctruyen');
 
 Auth::routes();
 
