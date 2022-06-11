@@ -48,7 +48,9 @@
                           Thể loại chuyện
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#">A</a></li>
+                          @foreach ( $theloai as $key => $the)
+                          <li><a class="dropdown-item" href="{{url('xem-the-loai/'.$the->slug_theloai)}}">{{$the->tentheloai}}</a></li>
+                          @endforeach
                           
                         </ul>
                       </li>
@@ -99,6 +101,20 @@
         }
     }
 })
+        </script>
+        <script type="text/javascript">
+            $('.select-chapter').on('change',function(){
+               var url = $(this).val();
+               if(url){
+                    window.location = url;
+               } return false;
+                
+            });
+            current_chapter();
+            function current_chapter(){
+                var url = window.location.href;
+                $('.select-chapter').find('option[value="'+url+'"]').attr("selected",true);
+            }
         </script>
     </body>
     

@@ -19,7 +19,7 @@
    <div class="col-md-9">
        <div class="row">
           <div class="col-md-3">
-            <img class="bd-placeholder-img card-img-top" src="{{asset('public/uploads/truyen/65216_laptop_asus_gaming_tuf_fa507r_4387.png')}}"> 
+            <img class="bd-placeholder-img card-img-top" src="{{asset('public/uploads/truyen/'.$truyen->hinhanh)}}"> 
           </div>
           <div class="col-md-9">
                      <ul class="infotruyen"> 
@@ -29,11 +29,17 @@
                          <li>Số Chapter: 200</li>
                          <li>Số Lượt xem</li>
                          <li><a href="#">Xem Mục lục</a></li>
+                        
+
+                         @if ($chapter_dau)
                          <li><a href="{{url('xem-chapter/'.$chapter_dau->slug_chapter)}}" class="btn btn-primary">Đọc online</a></li>
+                         @else
+                         <li><a href="" class="btn btn-primary" disabled>Đọc online</a></li>  
+                         @endif
                      </ul>
           </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 mt-3">
             <p>{{$truyen->tomtat}}</p>
         </div>
         <hr>

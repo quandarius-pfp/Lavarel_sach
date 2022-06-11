@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -80,6 +81,11 @@
         </main>
     </div>
 </body>
+<script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+        <script type="text/javascript">
+            CKEDITOR.replace( 'noidung_chapter' );
+            CKEDITOR.config.entities = false;
+        </script>
 <script type="text/javascript">
  
     function ChangeToSlug()
@@ -118,5 +124,6 @@
    
    
 </script>
+
 
 </html>

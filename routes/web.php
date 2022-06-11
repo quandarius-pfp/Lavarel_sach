@@ -6,6 +6,7 @@ use App\Http\Controllers\DanhMucController;
 use App\Http\Controllers\TruyenController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\TheLoaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/',[IndexController::class,'home'] );
 Route::get('/danh-muc/{slug}',[IndexController::class,'danhmuc'] );
 Route::get('/xem-truyen/{slug}',[IndexController::class,'xemtruyen'] );
 Route::get('/xem-chapter/{slug}',[IndexController::class,'xemchapter'] );
+Route::get('/xem-the-loai/{slug}',[IndexController::class,'xemtheloai'] );
 
 
 Auth::routes();
@@ -31,4 +33,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('/danhmuc', DanhMucController::class);
 Route::resource('/truyen', TruyenController::class);
 Route::resource('/chapter', ChapterController::class);
+Route::resource('/theloai', TheLoaiController::class);
+
 

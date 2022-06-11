@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DanhMucTruyen;
 use App\Models\Truyen;
+use App\Models\TheLoai;
 class TruyenController extends Controller
 {
     /**
@@ -13,8 +14,10 @@ class TruyenController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $list_truyen = Truyen::with('danhmuctruyen')->orderBY('id','DESC')->get(); // lấy id danh mục truyện
+    {   
+        $list_truyen = Truyen::with('danhmuctruyen')->with('theloai')->orderBY('id','DESC')->get(); // lấy id danh mục truyện
+        
+          
         return view ('admincp.truyen.index')->with(compact('list_truyen'));
     }
 
@@ -24,9 +27,10 @@ class TruyenController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {    
+        $theloai = TheLoai::orderBy('id','DESC')->get();
         $danhmuc = DanhMucTruyen::orderBy('id','DESC')->get();
-        return view ('admincp.truyen.create')->with(compact('danhmuc'));
+        return view ('admincp.truyen.create')->with(compact('danhmuc','theloai'));
     }
 
     /**
@@ -45,6 +49,7 @@ class TruyenController extends Controller
             'tacgia' => 'required',
             'kichhoat' => 'required',
             'danhmuc' =>'required',
+            'theloai_id' =>'required',
            ],
            [
             'tentruyen.unique' => 'Tên truyện Đã có , xin điền tên khác',
@@ -66,6 +71,7 @@ class TruyenController extends Controller
         $truyen->tacgia = $data['tacgia'];
         $truyen->kichhoat = $data['kichhoat'];
         $truyen->danhmuc_id = $data['danhmuc'];
+        $truyen->theloai_id = $data['theloai_id'];
         /* them hinh anh */
         $get_image = $request->hinhanh;
         $path =   'public/uploads/truyen/';
@@ -98,8 +104,9 @@ class TruyenController extends Controller
     public function edit($id)
     {   
         $truyen = Truyen::find($id); // lấy id danh mục truyện 
-        $danhmuc = DanhMucTruyen::orderBy('id','DESC')->get();         
-        return view ('admincp.truyen.edit')->with(compact('truyen','danhmuc'));
+        $danhmuc = DanhMucTruyen::orderBy('id','DESC')->get();    
+        $theloai = TheLoai::orderBy('id','DESC')->get();     
+        return view ('admincp.truyen.edit')->with(compact('truyen','danhmuc','theloai'));
     }
 
     /**
@@ -119,6 +126,7 @@ class TruyenController extends Controller
             'kichhoat' => 'required',
             'danhmuc' =>'required',
             'tacgia' => 'required',
+            'theloai_id' =>'required',
            ],
            [
            
@@ -139,6 +147,7 @@ class TruyenController extends Controller
         $truyen->kichhoat = $data['kichhoat'];
         $truyen->danhmuc_id = $data['danhmuc'];
         $truyen->tacgia = $data['tacgia'];
+        $truyen->theloai_id = $data['theloai_id'];
         /* them hinh anh */
         $get_image = $request->hinhanh;
         if($get_image){

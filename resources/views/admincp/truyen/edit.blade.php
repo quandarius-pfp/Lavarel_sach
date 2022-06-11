@@ -50,7 +50,14 @@
                                 @endforeach
                               </select>
                           </div>
-                           
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Danh Mục chuyện</label>
+                            <select class="form-select" aria-label="Default select example" name="theloai_id">
+                                @foreach($theloai as $key => $muc2)
+                                <option {{$muc2->id==$truyen->theloai_id ? 'selected' : ''}} value="{{$muc2->id}}">{{$muc2->tentheloai}}</option>
+                                @endforeach
+                              </select>
+                          </div>
                      
                           
                             <div class="mb-3"> 

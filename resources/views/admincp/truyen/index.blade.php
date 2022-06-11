@@ -23,6 +23,7 @@
                               <th scope="col">Slug truyện</th>
                               <th scope="col">Tóm tắt</th>
                               <th scope="col">Danh Mục</th>
+                              <th scope="col">Thể Loại</th>
                               <th scope="col">Kích hoạt</th>
                               <th scope="col">Quản lí</th>
                             </tr>
@@ -38,7 +39,9 @@
                                 </td>
                               <td>{{$truyen->slug_truyen}}</td>
                               <td>{{$truyen->tomtat}}</td>
+                             
                               <td>{{$truyen->danhmuctruyen->tendanhmuc}}</td>
+                               <td>{{$truyen->theloai->tentheloai}}</td>
                               <td>
                                 @if($truyen->kichhoat == 1)
                                 <p class="text-success">Kích Hoạt</p>
