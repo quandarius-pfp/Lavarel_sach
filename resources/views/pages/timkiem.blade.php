@@ -1,18 +1,19 @@
 @extends('../layout')
 
 @section('content')
+
 <div class="p-3 mb-2 " style="background:  rgb(202, 216, 225)">
   <nav aria-label="breadcrumb  bg-secondary" >
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{url('/')}}">Trang chủ</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{$theloai_id->tentheloai}}</li>
+        <li class="breadcrumb-item">Tìm Kiếm</li>
+        <li class="breadcrumb-item active" aria-current="page">{{$tukhoa}}</li>
       </ol>
     </nav>
   
   
   </div>
-
-<h3>Thể Loại Truyện :{{$theloai_id->tentheloai}} </h3>
+<h3>Tìm Kiếm theo  :{{$tukhoa}} </h3>
             <div class="row">
               <div class="album py-5 bg-light">
                 <div class="container">
@@ -21,7 +22,7 @@
                       @endphp
                       @if($count == 0)
                          
-                      <div class="p-3 mb-2 bg-dark text-white"><p>Truyện Đang cập nhật</p></div> 
+                      <div class="p-3 mb-2 bg-dark text-white"><p>Không tìm thấy truyện</p></div> 
                  @else 
                   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 ">
                       

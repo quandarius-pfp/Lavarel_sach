@@ -4,16 +4,18 @@
 @endsection --}}
 @section('content')
 <div class="p-3 mb-2 " style="background:  rgb(202, 216, 225)">
-<nav aria-label="breadcrumb  bg-secondary" >
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item"><a href="#">Library</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Data</li>
-    </ol>
-  </nav>
-
-
-</div>
+  <nav aria-label="breadcrumb  bg-secondary" >
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{url('/')}}">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a href="{{url('danh-muc/'.$truyen_br->danhmuctruyen->slug_danhmuc)}}">{{$truyen_br->danhmuctruyen->tendanhmuc}}</a></li>
+        <li class="breadcrumb-item"><a href="{{url('xem-the-loai/'.$truyen_br->theloai->slug_theloai)}}">{{$truyen_br->theloai->tentheloai}}</a></li>
+        <li class="breadcrumb-item"><a href="{{url('xem-truyen/'.$chapter->truyen->slug_truyen)}}">{{$chapter->truyen->tentruyen}}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{$chapter->tieude}}</li>
+      </ol>
+    </nav>
+  
+  
+  </div>
 <div class="container">
     <h2>{{$chapter->truyen->tentruyen}}</h2>
     <p>Chương Hiện tại: {{$chapter->tieude}}</p>

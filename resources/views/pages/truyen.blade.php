@@ -6,9 +6,9 @@
 <div class="p-3 mb-2 " style="background:  rgb(202, 216, 225)">
 <nav aria-label="breadcrumb  bg-secondary" >
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item"><a href="#">Library</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Data</li>
+      <li class="breadcrumb-item"><a href="{{url('/')}}">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="{{url('danh-muc/'.$truyen->danhmuctruyen->slug_danhmuc)}}">{{$truyen->danhmuctruyen->tendanhmuc}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{$truyen->tentruyen}}</li>
     </ol>
   </nav>
 
@@ -26,6 +26,7 @@
                          <li>Tên Truyện : {{$truyen->tentruyen}}</li>
                          <li>Tác Giả : {{$truyen->tacgia}}</li>
                          <li>Danh mục chuyện : <a href="{{url('danh-muc/'.$truyen->danhmuctruyen->slug_danhmuc)}}">{{$truyen->danhmuctruyen->tendanhmuc}}</a> </li>
+                         <li>Thể loại : <a href="{{url('xem-the-loai/'.$truyen->theloai->slug_theloai)}}">{{$truyen->theloai->tentheloai}}</a> </li>
                          <li>Số Chapter: 200</li>
                          <li>Số Lượt xem</li>
                          <li><a href="#">Xem Mục lục</a></li>

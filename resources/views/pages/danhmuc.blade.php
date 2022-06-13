@@ -2,7 +2,16 @@
 
 @section('content')
 
-
+<div class="p-3 mb-2 " style="background:  rgb(202, 216, 225)">
+  <nav aria-label="breadcrumb  bg-secondary" >
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{url('/')}}">Trang chủ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{$danhmuc_id->tendanhmuc}}</li>
+      </ol>
+    </nav>
+  
+  
+  </div>
 <h3>Danh Mục Truyện :{{$danhmuc_id->tendanhmuc}} </h3>
             <div class="row">
               <div class="album py-5 bg-light">
